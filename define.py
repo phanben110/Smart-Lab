@@ -1,54 +1,54 @@
-coordinatesX1 =359
-coordinatesY1 =970
+coordinatesX1 =249
+coordinatesY1 =594
 R1 = 180
 
-coordinatesX2 =566
-coordinatesY2 =730
+coordinatesX2 =420
+coordinatesY2 =329
 R2 = 150
 
-coordinatesX3 =693
-coordinatesY3 =546
+coordinatesX3 =413
+coordinatesY3 =329
 R3 = 100
 
-coordinatesX4 =750
-coordinatesY4 =422
-R4 = 60
+coordinatesX4 =478
+coordinatesY4 =259
+R4 = 100
 
-coordinatesX5 =1615
-coordinatesY5 =667
-R5 = 150
+coordinatesX5 =1256
+coordinatesY5 =582
+R5 =180
 
-coordinatesX6 =1456
-coordinatesY6 =470
-R6 = 100
+coordinatesX6 =1109
+coordinatesY6 =429
+R6 = 180
 
-coordinatesX7 =1360
-coordinatesY7 =351
-R7 = 70
+coordinatesX7 =991
+coordinatesY7 =278
+R7 = 180
 
 
-A1 = (319,1068)
-B1 = (432,880)
+A1 = (234,728)
+B1 = (336,497)
 # A1 = (1,2)
 # B1 = (5,2)
 
-A2 = (438,853)
-B2 = (591,631)
+A2 = (317,465)
+B2 = (374,359)
 
-A3 = (606,619)
-B3 = (685,489)
+A3 = (418,360)
+B3 = (467,290)
 
-A4 = (723,464)
-B4 = (769,389)
+A4 = (436,281)
+B4 = (482,230)
 
-A5 = (1759,790)
-B5 = (1603,569)
+A5 = (1281,724)
+B5 = (1122,499)
 
-A6 = (1546,537)
-B6 = (1456,422)
+A6 = (1158,470)
+B6 = (1062,348)
 
-A7 = (1419,397)
-B7 = (1360,316)
+A7 = (1029,339)
+B7 = (943,232 )
 
 table1 =(A1,B1)
 table2 =(A2,B2)
