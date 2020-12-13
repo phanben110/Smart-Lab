@@ -6,9 +6,9 @@ import calculatorCheckTable as cal
 import array as arr
 import csv
 
-video = "22.mp4"
-video = "24.mp4"
-video = "01.mp4"
+#video = "22.mp4"  #this vide don't have people 
+video = "24.mp4"  #this video have 3 people 
+video = "01.mp4"  #this video have 5 people 
 
 #video = "33.avi"
 
@@ -21,6 +21,7 @@ def saveDataToFileCsv(data):
 
 
 people = [0, 0, 0, 0, 0, 0, 0]
+countPeople = None 
 numbers_array = arr.array('i', people)
 
 
@@ -62,7 +63,6 @@ def checkPointWithTable(table, C, img):
         check = cal.checkCondition((cal.distanceAH(table[i], cal.solvePointH(table[i], C))), (cal.distanceBH(
             table[i], cal.solvePointH(table[i], C))), cal.distanceAB(table[i]), (cal.distanceFromCtoAB(table[i], C)), de.distanceValue)
         if check == True:
-            print("OK OK OK OK")
             print(cal.solvePointH(table[i], C))
             color = (255, 0, 255)
             thickness = 5
@@ -82,7 +82,6 @@ def checkPointWithTable(table, C, img):
             # cv2.putText(img, label, (start_point[0]-100, start_point[1]-150), font, 2, color, 2)
 
         # Access camera and take, save photo
-    print ( f"people { count} "  )
     return count 
 
 def doing():
@@ -164,20 +163,34 @@ def doing():
         indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
         print(indexes)
         font = cv2.FONT_HERSHEY_PLAIN
+        countPeople = 0 
+        pointCenter = {0} 
         for i in range(len(boxes)):
             if i in indexes:
                 x, y, w, h = boxes[i]
                 label = str(classes[class_ids[i]])
                 color = colors[i]
+                
 
             if label == 'people':
                 cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
-                creatCenterPoint(x, y, w, h, img)
-                checkPointWithTable(
-                    de.TABLE, creatCenterPoint(x, y, w, h, img), img)
-                # cv2.putText(img, label, (x + 50, y - 5), font, 1, color, 2)
+                #creatCenterPoint(x, y, w, h, img)
+                pointCenter.add(creatCenterPoint(x,y,w,h,img))  
+
+        for i in pointCenter:
+            if i == 0 : 
+                pass 
+            
+            else : 
+                checkPointWithTable(de.TABLE, i, img)
+                countPeople += 1 
+           
+       
                 print ( i ) 
 
+        print (f"print value pointCenter {pointCenter}" )  
+        text = "Number of people:  " + str(countPeople)  
+        cv2.putText(img, text, (50,50), font, 3, (255,0,0), 3)
         #angleTable(de.coordinatesX1 ,de.coordinatesY1, de.R1, img)
         #angleTable(de.coordinatesX2, de.coordinatesY2, de.R2, img)
         #angleTable(de.coordinatesX3, de.coordinatesY3, de.R3, img)
@@ -192,15 +205,16 @@ def doing():
         paintLineTable(de.table5, img)
         paintLineTable(de.table6, img)
         paintLineTable(de.table7, img)
+        print (f" so nguoi trong phong la {countPeople } ") 
         for i in range(7):
             cv2.putText(img, "Table" + str(i+1) + ": " + str(people[i]) + " people",
-                        (de.TABLE[i][0][0] - 100, de.TABLE[i][0][1] - 150), font, 2, (255, 255, 255), 4)
+                        (de.TABLE[i][0][0] - 90, de.TABLE[i][0][1] - 140), font, 2, (0, 255, 255), 4)
 
         saveDataToFileCsv(people)
 
         for i in range(7):
             people[i] = 0
-        #img = cv2.resize( img , ( 960 , 540 ) )  # resize for 1.2 real
+        img = cv2.resize( img , ( 960 , 540 ) )  # resize for 1.2 real
         cv2.imshow("Image", img)
         cv2.waitKey(1)
         plt.imshow(img)

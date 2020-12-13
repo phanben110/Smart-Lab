@@ -67,7 +67,7 @@ def checkCondition( AH, BH , AB , HC , Value):
 	print(BH)
 	print(AB)
 	print(HC)
-	if (AH<AB) and (BH<AB) and (HC<= 35) :
+	if (AH<AB) and (BH<AB) and (HC<= 45) :
 		print("Ben")
 		print(AH)
 		print(BH)
